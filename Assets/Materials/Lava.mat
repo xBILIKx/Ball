@@ -89,7 +89,7 @@ Material:
     - Color_EE11CE9D: {r: 0.0013037875, g: 0, b: 0, a: 0}
     - Color_FF653A9F: {r: 2, g: 0.6661036, b: 0, a: 1}
     - Vector2_298304BC: {r: 0, g: 0.005, b: 0, a: 0}
-    - Vector2_328A1657: {r: 1, g: 2, b: 0, a: 0}
+    - Vector2_328A1657: {r: 10, g: 10, b: 0, a: 0}
     - Vector2_65E2F10B: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_84AA874: {r: 0, g: 4.81, b: 0, a: 0}
     - Vector2_E988FDC9: {r: 0, g: 0.01, b: 0, a: 0}
