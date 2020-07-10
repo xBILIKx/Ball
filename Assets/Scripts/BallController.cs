@@ -16,7 +16,7 @@ public class BallController : MonoBehaviour
     public int coinsCollected;
 
 
-    public Rigidbody rb;
+    [NonSerialized] public Rigidbody rb;
 
     void Start()
     {
