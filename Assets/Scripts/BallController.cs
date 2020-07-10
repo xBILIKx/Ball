@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class BallController : MonoBehaviour
 {
     public UnityEvent openDoor = new UnityEvent();
-#if UNITY_STANDALONE || UNITY_EDITOR
+#if UNITY_STANDALONE 
     public Vector3 movement;
 #elif UNITY_ANDROID
     public Vector3 gravity;
@@ -16,7 +16,7 @@ public class BallController : MonoBehaviour
     public int coinsCollected;
 
 
-    [NonSerialized] public Rigidbody rb;
+    public Rigidbody rb;
 
     void Start()
     {
@@ -26,7 +26,7 @@ public class BallController : MonoBehaviour
 
     private void FixedUpdate()
     {
-#if UNITY_STANDALONE || UNITY_EDITOR
+#if UNITY_STANDALONE 
         float horizontalAxis = Input.GetAxis("Horizontal");
         float verticalAxis = Input.GetAxis("Vertical");
 

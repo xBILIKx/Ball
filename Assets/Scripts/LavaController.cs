@@ -7,9 +7,7 @@ public class LavaController : MonoBehaviour
     public Vector3 respawnPlayerPosition;
     public Vector3 respawnCameraPosition;
     public GameObject player;
-#pragma warning disable CS0108
-    public GameObject camera;
-#pragma warning restore CS0108
+    public GameObject _camera;
     BallController bc;
     private void Start()
     {
@@ -19,7 +17,7 @@ public class LavaController : MonoBehaviour
     public void SetPosition()
     {
         respawnPlayerPosition = player.transform.position;
-        respawnCameraPosition = camera.transform.position;
+        respawnCameraPosition = _camera.transform.position;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,8 +25,8 @@ public class LavaController : MonoBehaviour
         if (other.tag == "Player") 
         {
             player.transform.position = respawnPlayerPosition;
-            camera.transform.position = respawnCameraPosition;
-#if UNITY_STANDALONE || UNITY_EDITOR
+            _camera.transform.position = respawnCameraPosition;
+#if UNITY_STANDALONE 
             ////bc.movement = Vector3.zero;
             //bc.rb.AddForce(-bc.movement);
             bc.rb.velocity = Vector3.zero;
