@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,10 +7,16 @@ using UnityEngine.Events;
 public class BallController : MonoBehaviour
 {
     public UnityEvent openDoor = new UnityEvent();
+#if UNITY_STANDALONE || UNITY_EDITOR
+    public Vector3 movement;
+#elif UNITY_ANDROID
+    public Vector3 gravity;
+#endif
     public float Speed = 3.4f;
     public int coinsCollected;
 
-    private Rigidbody rb;
+
+    [NonSerialized] public Rigidbody rb;
 
     void Start()
     {
@@ -23,9 +30,10 @@ public class BallController : MonoBehaviour
         float horizontalAxis = Input.GetAxis("Horizontal");
         float verticalAxis = Input.GetAxis("Vertical");
 
-        rb.AddForce(new Vector3(horizontalAxis, 0, verticalAxis) * Speed);
+        movement = new Vector3(horizontalAxis, 0, verticalAxis) * Speed;
+        rb.AddForce(movement);
 #elif UNITY_ANDROID
-        Vector3 gravity = new Vector3(Input.acceleration.x, Input.acceleration.z, Input.acceleration.y) * 9.81f;
+        gravity = new Vector3(Input.acceleration.x, Input.acceleration.z, Input.acceleration.y) * 9.81f;
         rb.AddForce(gravity, ForceMode.Acceleration);
 #endif
     }
